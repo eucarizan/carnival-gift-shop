@@ -5,6 +5,7 @@
   - [about](#about)
   - [stages](#stages)
     - [1: welcome to the carnival](#1-welcome-to-the-carnival)
+    - [2: how much](#2-how-much)
 
 ## learning
 get familiar with javascript's fundamental syntax and create a simple program that utilizes variables, conditions, loops, and functions.
@@ -73,6 +74,59 @@ skateboard
 toy car
 basketball
 scary mask
+```
+
+</details>
+
+### 2: how much
+<details>
+<summary>practice with objects to store more information about gifts and show them in the console.</summary>
+
+#### 2.1 description
+in the previous stage, you've shown the list of gifts in our gift shop. now, we need to show more information about these gifts: the price and id/order.
+
+keep all the previous messages but change how the list of gifts is shown with additional information.
+
+the details about the gifts are below:
+
+name|price|id/order
+:-:|:-:|:-:
+teddy bear|10|1
+big red ball|5|2
+huge bear|50|3
+candy|8|4
+stuffed tiger|15|5
+stuffed dragon|30|6
+skateboard|100|7
+toy car|25|8
+basketball|20|9
+scary mask|75|10
+
+output the changes like in the example. using objects can be helpful with the details of a gift.
+
+#### 2.2 objectives
+in this stage, your program should:
+- print welcoming and greeting messages from the previous stage.
+- print the list of gifts with the new information.
+
+#### 2.3 examples
+example 1: where the program starts with the welcome messages and shows the list of gifts with the new details
+
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
 ```
 
 </details>
