@@ -6,6 +6,7 @@
   - [stages](#stages)
     - [1: welcome to the carnival](#1-welcome-to-the-carnival)
     - [2: how much](#2-how-much)
+    - [3: what visitor wants](#3-what-visitor-wants)
 
 ## learning
 get familiar with javascript's fundamental syntax and create a simple program that utilizes variables, conditions, loops, and functions.
@@ -131,9 +132,169 @@ here's the list of gifts:
 
 </details>
 
+### 3: what visitor wants
+<details>
+<summary>get input from the user to perform various tasks and work with conditionals, switch cases, and numbers to output correct results.</summary>
+
+#### 3.1 description
+now that you have the list of gifts with details, the visitors will decide what they want.
+
+first, let’s get this input from the visitor:
+
+```
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts
+```
+
+the visitor will enter the respective number to choose an option. also, the visitor will have `100` tickets in the beginning.
+
+in the first option, we will ask for another input: `enter the number of the gift you want to get:`
+
+the visitor will enter the id/order number of the gift, and we will output the name of the gift: `here you go, one %gift_name%!`
+
+then, we will subtract the ticket amount of the chosen gift from the visitor’s total tickets and show the total tickets: `total tickets: 90`
+
+in the second option, the visitor will enter the number of tickets to add with this input: `enter the ticket amount:`
+
+after that, we will show the total number of tickets again!
+
+in the third option, let's show the total tickets that the visitor has: `total tickets: 90`
+
+and in the last option, show the list of gifts again like in the example!
+
+after any of these cases, output this message before ending the program: `have a nice day!`
+
+#### 3.2 objectives
+in this stage, your program should:
+
+1. print the welcoming and greeting messages from the previous stage;
+2. print the list of gifts;
+3. handle the initial input where the user chooses what to do;
+4. handle the option to buy a gift;
+5. handle the option to add more tickets;
+6. handle the option to see the total tickets;
+7. handle the option to see the list of gifts;
+8. terminate the program with a new message.
+
+#### 3.3 examples
+the greater-than symbol followed by a space (`> `) represents the user input. note that it's not part of the input.
+
+**example 1**: _where the program handles the initial input with the first option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts
+> 1
+enter the number of the gift you want to get: > 1
+here you go, one teddy bear!
+total tickets: 90
+have a nice day!
+```
+
+**example 2**: _where the program handles the initial input with the second option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts
+> 2
+enter the ticket amount: > 100
+total tickets: 200
+have a nice day!
+```
+
+**example 3**: _where the program handles the initial input with the third option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts
+> 3
+total tickets: 100
+have a nice day!
+```
+
+**example 4**: _where the program handles the initial input with the fourth option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts
+> 4
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+have a nice day!
+```
+
+</details>
+
 [<<](https://github.com/eucarizan/front-end/blob/main/README.md)
 <!--
 :%s/\(Sample \(Input\|Output\) \d:\)\n\(.*\)/```\r\r**\1**\r```\3/gc
+the greater-than symbol followed by a space (`> `) represents the user input. note that it's not part of the input.
 
 ### 0: 
 <details>
