@@ -46,28 +46,34 @@ function listGifts() {
 
 async function showMenu() {
   const question = (query) => new Promise((resolve) => rl.question(query, resolve));
+  const query = `What do you want to do?
+1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts 5-Exit the shop
+`;
 
-  let choice = Number(await question("What do you want to do?\n1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts\n"));
-  switch (choice) {
-    case 1:
-      await buyGift();
-      break;
-    case 2:
-      await addTickets();
-      break;
-    case 3:
-      checkTickets();
-      break;
-    case 4:
-      listGifts();
-      break;
+  let choice = Number(await question(query));
+  while (choice != 5) {
+    switch (choice) {
+      case 1:
+        await buyGift();
+        break;
+      case 2:
+        await addTickets();
+        break;
+      case 3:
+        checkTickets();
+        break;
+      case 4:
+        listGifts();
+        break;
+    }
+    choice = Number(await question(query));
   }
 }
 
 async function buyGift() {
   const question = (query) => new Promise((resolve) => rl.question(query, resolve));
 
-  let id = Number(await question("\nEnter the number of gift you want to get:\n"));
+  let id = Number(await question("Enter the number of gift you want to get:"));
   let gift = getGiftById(id);
   if (gift) {
     const { name, cost } = gift;
@@ -82,7 +88,7 @@ function getGiftById(id) {
 }
 
 function checkTickets() {
-  console.log(`Total tickets: ${tickets}\nHave a nice day!`);
+  console.log(`Total tickets: ${tickets}\n`);
 }
 
 async function addTickets() {
@@ -94,9 +100,9 @@ async function addTickets() {
 }
 
 (async function main() {
-  tickets = 100;
   displayGreeting();
   listGifts();
   await showMenu();
+  console.log("Have a nice day!");
   rl.close();
 })();
