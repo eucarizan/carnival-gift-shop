@@ -79,12 +79,20 @@ async function buyGift() {
     const { name, cost } = gift;
     console.log(`Here you go, one ${name}!`);
     tickets -= cost;
+    removeGiftById(id);
   }
   checkTickets();
 }
 
 function getGiftById(id) {
   return gifts.find(gift => gift.id == id) || null;
+}
+
+function removeGiftById(id) {
+  const index = gifts.findIndex(gift => gift.id === id);
+  if (index !== -1) {
+    gifts.splice(index, 1);
+  }
 }
 
 function checkTickets() {
