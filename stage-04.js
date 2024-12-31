@@ -23,46 +23,44 @@ function displayGreeting() {
 
 function listGifts() {
   console.log("Here's the list of gifts:\n");
-  /*
-  let i = 1;
-  for (let toy in gifts) {
-    console.log(`${i}- ${toy}, Cost: ${gifts[toy]} tickets`);
-    i++;
-  }
-  Object.entries(gifts).forEach(([gift, cost], index) => {
-    console.log(`${index + 1}- ${gift}, Cost: ${cost} tickets`);
-  });
-  */
   gifts.forEach((gift) => {
     console.log(`${gift.id}- ${gift.name}, Cost: ${gift.cost} tickets`);
   });
 }
 
 function showMenu() {
-  let choice = Number(input("What do you want to do?\n1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts\n"));
-  switch (choice) {
-    case 1:
-      buyGift();
-      break;
-    case 2:
-      addTickets();
-      break;
-    case 3:
-      checkTickets();
-      break;
-    case 4:
-      listGifts();
-      break;
+  const query = `What do you want to do?
+  1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts 5-Exit the shop
+  `;
+
+  let choice = Number(input(query));
+  while (choice != 5) {
+    switch (choice) {
+      case 1:
+        buyGift();
+        break;
+      case 2:
+        addTickets();
+        break;
+      case 3:
+        checkTickets();
+        break;
+      case 4:
+        listGifts();
+        break;
+    }
+    choice = Number(input(query));
   }
 }
 
 function buyGift() {
-  let id = Number(input("Enter the number of gift you want to get:\n"));
-  let gift = getGiftById(id);
+  const index = Number(input('Enter the number of the gift you want to get: '));
+  let gift = getGiftById(index);
   if (gift) {
     const { name, cost } = gift;
     console.log(`Here you go, one ${name}!`);
     tickets -= cost;
+    removeGiftById(index);
   }
   checkTickets();
 }
@@ -71,8 +69,15 @@ function getGiftById(id) {
   return gifts.find(gift => gift.id == id) || null;
 }
 
+function removeGiftById(id) {
+  const index = gifts.findIndex(gift => gift.id === id);
+  if (index !== -1) {
+    gifts.splice(index, 1);
+  }
+}
+
 function checkTickets() {
-  console.log(`Total tickets: ${tickets}`);
+  console.log(`Total tickets: ${tickets}\n`);
 }
 
 function addTickets() {
@@ -82,9 +87,9 @@ function addTickets() {
 }
 
 (function main() {
-  tickets = 100;
   displayGreeting();
   listGifts();
   showMenu();
   console.log("Have a nice day!");
 })();
+

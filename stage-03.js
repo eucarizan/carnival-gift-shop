@@ -57,7 +57,7 @@ function showMenu() {
 }
 
 function buyGift() {
-  let id = Number(input("Enter the number of gift you want to get:\n"));
+  let id = Number(input("Enter the number of gift you want to get:"));
   let gift = getGiftById(id);
   if (gift) {
     const { name, cost } = gift;
