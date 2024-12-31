@@ -7,6 +7,7 @@
     - [1: welcome to the carnival](#1-welcome-to-the-carnival)
     - [2: how much](#2-how-much)
     - [3: what visitor wants](#3-what-visitor-wants)
+    - [4: can you repeat](#4-can-you-repeat)
 
 ## learning
 get familiar with javascript's fundamental syntax and create a simple program that utilizes variables, conditions, loops, and functions.
@@ -287,6 +288,104 @@ here's the list of gifts:
 9- basketball, cost: 20 tickets
 10- scary mask, cost: 75 tickets
 have a nice day!
+```
+
+</details>
+
+### 4: can you repeat
+<details>
+<summary>implement a condition to run your program continuously until users decide to quit</summary>
+
+#### 4.1 description
+in the previous stage, you've implemented the operations the visitor can do with our program. now, let's loop our program until visitors decide to quit. add a new prompt to exit the program to the initial input:
+
+```
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+```
+
+if the visitor enters the exit command, the program will end and show the previous ending message. otherwise, the program will go back to our initial input and ask the visitors what to do again.
+
+additionally, in the case of buying gifts, if everything goes well, remove the gift that the visitor bought from the list of gifts.
+
+don't worry about the user not having enough tickets to buy a gift. you'll handle cases like this in the next stage.
+
+the starting tickets will be `zero` this time. 
+
+#### 4.2 objectives
+in this stage, your program should:
+
+1. print the welcoming and greeting messages from the previous stage;
+2. print the list of gifts;
+3. handle initial input which the user chooses what to do;
+4. handle the option to buy a gift and remove the gift from the list;
+5. handle the option to add more tickets;
+6. handle the option to see the total tickets;
+7. handle the option to see the list of gifts;
+8. handle a new option to quit the program;
+9. run continuously;
+10. terminate the program with the message.
+
+#### 4.3 examples
+the greater-than symbol followed by a space (`> `) represents the user input. note that it's not part of the input.
+
+**example 1**: _where the program starts and runs continuously until the exit prompt_
+
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 2
+enter the ticket amount: > 100
+total tickets: 100
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 1
+enter the number of the gift you want to get: > 10
+here you go, one scary mask!
+total tickets: 25
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 4
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 3
+total tickets: 25
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
 ```
 
 </details>
