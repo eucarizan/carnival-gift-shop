@@ -63,15 +63,20 @@ function showMenu() {
 }
 
 function buyGift() {
-  const index = Number(input('Enter the number of the gift you want to get: '));
-  let gift = getGiftById(index);
-  if (gift) {
-    const { name, cost } = gift;
-    console.log(`Here you go, one ${name}!`);
-    tickets -= cost;
-    removeGiftById(index);
+  if (gifts.length !== 0) {
+    const index = Number(input('Enter the number of the gift you want to get: '));
+    let gift = getGiftById(index);
+    if (gift) {
+      const { name, cost } = gift;
+      console.log(`Here you go, one ${name}!`);
+      tickets -= cost;
+      removeGiftById(index);
+    }
+    checkTickets();
+  } else {
+    console.log("Wow! There are no gifts with that number!");
   }
-  checkTickets();
+  console.log();
 }
 
 function getGiftById(id) {
@@ -86,7 +91,7 @@ function removeGiftById(id) {
 }
 
 function checkTickets() {
-  console.log(`Total tickets: ${tickets}\n`);
+  console.log(`Total tickets: ${tickets}`);
 }
 
 function addTickets() {
