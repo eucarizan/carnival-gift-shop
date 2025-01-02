@@ -64,15 +64,20 @@ function showMenu() {
 
 function buyGift() {
   if (gifts.length !== 0) {
-    const index = Number(input('Enter the number of the gift you want to get: '));
-    let gift = getGiftById(index);
-    if (gift) {
-      const { name, cost } = gift;
-      console.log(`Here you go, one ${name}!`);
-      tickets -= cost;
-      removeGiftById(index);
+    const choice = input('Enter the number of the gift you want to get: ');
+    if (Number.isNaN(Number(choice)) {
+      console.log("Please enter a valid number!");
+    } else {
+      const index = Number(choice);
+      let gift = getGiftById(index);
+      if (gift) {
+        const { name, cost } = gift;
+        console.log(`Here you go, one ${name}!`);
+        tickets -= cost;
+        removeGiftById(index);
+      }
+      checkTickets();
     }
-    checkTickets();
   } else {
     console.log("Wow! There are no gifts with that number!");
   }
