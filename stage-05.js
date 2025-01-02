@@ -72,9 +72,13 @@ function buyGift() {
       let gift = getGiftById(index);
       if (gift) {
         const { name, cost } = gift;
-        console.log(`Here you go, one ${name}!`);
-        tickets -= cost;
-        removeGiftById(index);
+        if (cost > tickets) {
+          console.log("You don't have enough tickets to buy this gift.");
+        } else {
+          console.log(`Here you go, one ${name}!`);
+          tickets -= cost;
+          removeGiftById(index);
+        }
         checkTickets();
       } else {
         console.log("There is no gift with that number!");
