@@ -49,9 +49,13 @@ function showMenu() {
         break;
       case 3:
         checkTickets();
+        console.log();
         break;
       case 4:
         listGifts();
+        break;
+      default:
+        console.log("Please enter a valid number!\n");
         break;
     }
     choice = Number(input(query));
