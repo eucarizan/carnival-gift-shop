@@ -90,9 +90,14 @@ function checkTickets() {
 }
 
 function addTickets() {
-  let ticketToAdd = Number(input("Enter the ticket amount: "));
-  tickets += ticketToAdd;
-  checkTickets();
+  let choice = input("Enter the ticket amount: ");
+  if (Number.isNaN(choice)) {
+    console.log("Please enter a vlid number between 0 and 1000.");
+  } else {
+    let ticketToAdd = Number(choice);
+    tickets += ticketToAdd;
+    checkTickets();
+  }
 }
 
 (function main() {
