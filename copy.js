@@ -28,19 +28,13 @@ function displayGreeting() {
 
 function listGifts() {
   console.log("Here's the list of gifts:\n");
-  /*
-  let i = 1;
-  for (let toy in gifts) {
-    console.log(`${i}- ${toy}, Cost: ${gifts[toy]} tickets`);
-    i++;
+  if (gifts.length === 0) {
+    console.log("Wow! There are no gifts to buy.");
+  } else {
+    gifts.forEach((gift) => {
+      console.log(`${gift.id}- ${gift.name}, Cost: ${gift.cost} tickets`);
+    });
   }
-  Object.entries(gifts).forEach(([gift, cost], index) => {
-    console.log(`${index + 1}- ${gift}, Cost: ${cost} tickets`);
-  });
-  */
-  gifts.forEach((gift) => {
-    console.log(`${gift.id}- ${gift.name}, Cost: ${gift.cost} tickets`);
-  });
   console.log();
 }
 
@@ -61,9 +55,13 @@ async function showMenu() {
         break;
       case 3:
         checkTickets();
+        console.log();
         break;
       case 4:
         listGifts();
+        break;
+      default:
+        console.log("Please enter a valid number!\n");
         break;
     }
     choice = Number(await question(query));
@@ -73,15 +71,31 @@ async function showMenu() {
 async function buyGift() {
   const question = (query) => new Promise((resolve) => rl.question(query, resolve));
 
-  let id = Number(await question("Enter the number of gift you want to get:"));
-  let gift = getGiftById(id);
-  if (gift) {
-    const { name, cost } = gift;
-    console.log(`Here you go, one ${name}!`);
-    tickets -= cost;
-    removeGiftById(id);
+  if (gifts.length !== 0) {
+    let choice = await question("Enter the number of gift you want to get:");
+    if (Number.isNaN(Number(choice))) {
+      console.log("Please enter a valid number!");
+    } else {
+      let id = Number(choice);
+      let gift = getGiftById(id);
+      if (gift) {
+        const { name, cost } = gift;
+        if (cost > tickets) {
+          console.log("You don't have enough tickets to buy this gift.");
+        } else {
+          console.log(`Here you go, one ${name}!`);
+          tickets -= cost;
+          removeGiftById(id);
+        }
+        checkTickets();
+      } else {
+        console.log("There is no gift with that number!");
+      }
+    }
+  } else {
+    console.log("Wow! There are no gifts to buy.");
   }
-  checkTickets();
+  console.log();
 }
 
 function getGiftById(id) {
@@ -96,15 +110,25 @@ function removeGiftById(id) {
 }
 
 function checkTickets() {
-  console.log(`Total tickets: ${tickets}\n`);
+  console.log(`Total tickets: ${tickets}`);
 }
 
 async function addTickets() {
   const question = (query) => new Promise((resolve) => rl.question(query, resolve));
 
-  let ticketToAdd = Number(await question("Enter the ticket amount: "));
-  tickets += ticketToAdd;
-  checkTickets();
+  let choice = await question("Enter the ticket amount: ");
+  if (Number.isNaN(choice)) {
+    console.log("Please enter a valid number between 0 and 1000.");
+  } else {
+    let ticketToAdd = Number(choice);
+    if (ticketToAdd > -1 && ticketToAdd < 1001) {
+      tickets += ticketToAdd;
+      checkTickets();
+    } else {
+      console.log("Please enter a valid number between 0 and 1000.");
+    }
+  }
+  console.log();
 }
 
 (async function main() {
