@@ -64,30 +64,36 @@ function showMenu() {
 
 function buyGift() {
   if (gifts.length !== 0) {
-    const choice = input('Enter the number of the gift you want to get: ');
-    if (Number.isNaN(Number(choice)) {
-      console.log("Please enter a valid number!");
-    } else {
-      const index = Number(choice);
-      let gift = getGiftById(index);
-      if (gift) {
-        const { name, cost } = gift;
-        if (cost > tickets) {
-          console.log("You don't have enough tickets to buy this gift.");
-        } else {
-          console.log(`Here you go, one ${name}!`);
-          tickets -= cost;
-          removeGiftById(index);
-        }
-        checkTickets();
-      } else {
-        console.log("There is no gift with that number!");
-      }
-    }
-  } else {
-    console.log("Wow! There are no gifts with that number!");
+    console.log("Wow! There are no gifts to buy.\n");
+    return;
   }
-  console.log();
+
+  const choice = input('Enter the number of the gift you want to get: ');
+  const giftId = Number(choice);
+
+  if (Number.isNaN(giftId)) {
+    console.log("Please enter a valid number!\n");
+    return
+  }
+
+  const gift = getGiftById(giftId);
+
+  if (!gift) {
+    console.log("There is no gift with that number!\n");
+    return;
+  }
+  
+  const { name, cost } = gift;
+  
+  if (cost > tickets) {
+    console.log("You don't have enough tickets to buy this gift.\n");
+    return;
+  }
+  
+  console.log(`Here you go, one ${name}!`);
+  tickets -= cost;
+  removeGiftById(index);
+  checkTickets();
 }
 
 function getGiftById(id) {
@@ -118,6 +124,7 @@ function addTickets() {
       console.log("Please enter a valid number between 0 and 1000.");
     }
   }
+  console.log();
 }
 
 (function main() {
