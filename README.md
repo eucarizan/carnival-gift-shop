@@ -8,6 +8,7 @@
     - [2: how much](#2-how-much)
     - [3: what visitor wants](#3-what-visitor-wants)
     - [4: can you repeat](#4-can-you-repeat)
+    - [5: expect the unexpected](#5-expect-the-unexpected)
 
 ## learning
 get familiar with javascript's fundamental syntax and create a simple program that utilizes variables, conditions, loops, and functions.
@@ -379,6 +380,280 @@ what do you want to do?
 1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
 > 3
 total tickets: 25
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
+```
+
+</details>
+
+### 5: expect the unexpected
+<details>
+<summary>handle unexpected inputs that users may provide</summary>
+
+#### 5.1 description
+we made our program run continuously, but there is a problem, as you cannot handle any unexpected inputs! the visitor could enter a different number than you provide, or they could enter a character instead of a number. now, we will handle these cases.
+
+for the initial input, where you ask the visitors what to do, if the visitor enters anything unexpected, output `please enter a valid number!`
+
+for the **first** option, where the visitor chooses to buy a gift, handle these cases;
+
+- if there're no gifts left to buy, output: `wow! there are no gifts to buy.`
+- if there are non-numeric characters in the input: `please enter a valid number!`
+- if there are no gifts with that number. output this message: `there is no gift with that number!`
+- if the visitor doesn’t have enough tickets to buy a gift: `you don't have enough tickets to buy this gift.`
+
+for the **second** option, where the visitor enters the number of tickets they want to add, handle these cases:
+
+- if they enter a non-numeric value.
+- the number they enter should be between `0` and `1000` (both inclusive).
+
+output this message if **any** of these cases happen: `please enter a valid number between 0 and 1000.`
+for the **last** option, where you show the list of gifts, if there are no gifts left to offer, output this message again: `wow! there are no gifts to buy.`
+following the previous stage, the program will run until the exit prompt is entered.
+you can use the [isnan](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) built-in method to check if an input is a number.
+
+#### 5.2 objectives
+in this stage, your program should:
+
+1. print the welcoming and greeting messages from the previous stage;
+2. print the list of gifts;
+3. handle the initial input where the user chooses what to do and handle any unexpected inputs;
+4. handle the option to buy a gift and handle all of the cases mentioned above;
+5. handle the option to add more tickets to the total tickets and handle all of the cases mentioned above;
+6. handle the option to see the total tickets;
+7. handle the option to see the list of gifts and handle all of the cases mentioned above;
+8. handle the option to quit the program;
+9. run continuously;
+10. terminate the program the message.
+
+#### 5.3 examples
+the greater-than symbol followed by a space (`> `) represents the user input. note that it's not part of the input.
+
+**example 1:** _where the program handles an unexpected input at the initial stage_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 6
+please enter a valid number!
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
+```
+
+**example 2:** _where the program takes a random input at the first option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 2
+enter the ticket amount: > 100
+total tickets: 100
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 1
+enter the number of the gift you want to get: > a
+please enter a valid number!
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
+```
+
+**example 3:** _where the program addresses if the user enters the wrong id at the first option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 2
+enter the ticket amount: > 100
+total tickets: 100
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 1
+enter the number of the gift you want to get: > 0
+there is no gift with that number!
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
+```
+
+**example 4:** _where the program addresses if the user has insufficient tickets at the first option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 1
+enter the number of the gift you want to get: > 1
+you don't have enough tickets to buy this gift.
+total tickets: 0
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
+```
+
+**example 5:** _where the program addresses if there are no gifts left at the first option_
+```
+...
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 1
+wow! there are no gifts to buy.
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+>
+```
+
+**example 6:** _where the program takes an unexpected input at the second option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 2
+enter the ticket amount: > a
+please enter a valid number between 0 and 1000.
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
+```
+
+**example 7:** _where the program takes unexpected information at the second option_
+```
+welcome to the carnival gift shop!
+hello friend! thank you for visiting the carnival!
+here's the list of gifts:
+
+1- teddy bear, cost: 10 tickets
+2- big red ball, cost: 5 tickets
+3- huge bear, cost: 50 tickets
+4- candy, cost: 8 tickets
+5- stuffed tiger, cost: 15 tickets
+6- stuffed dragon, cost: 30 tickets
+7- skateboard, cost: 100 tickets
+8- toy car, cost: 25 tickets
+9- basketball, cost: 20 tickets
+10- scary mask, cost: 75 tickets
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 2
+enter the ticket amount: > 1001
+please enter a valid number between 0 and 1000.
+
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 5
+have a nice day!
+
+process finished with exit code 0
+```
+
+**example 8:** _where the program addresses if there are no gifts left at the fourth option_
+```
+...
+what do you want to do?
+1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
+> 4
+here's the list of gifts:
+
+wow! there are no gifts to buy.
 
 what do you want to do?
 1-buy a gift 2-add tickets 3-check tickets 4-show gifts 5-exit the shop
