@@ -23,15 +23,20 @@ function displayGreeting() {
 
 function listGifts() {
   console.log("Here's the list of gifts:\n");
-  gifts.forEach((gift) => {
-    console.log(`${gift.id}- ${gift.name}, Cost: ${gift.cost} tickets`);
-  });
+  if (gifts.length === 0) {
+    console.log("Wow! There are no gifts to buy.");
+  } else {
+    gifts.forEach((gift) => {
+      console.log(`${gift.id}- ${gift.name}, Cost: ${gift.cost} tickets`);
+    });
+  }
+  console.log();
 }
 
 function showMenu() {
   const query = `What do you want to do?
-  1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts 5-Exit the shop
-  `;
+1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts 5-Exit the shop
+`;
 
   let choice = Number(input(query));
   while (choice != 5) {
