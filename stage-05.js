@@ -75,8 +75,10 @@ function buyGift() {
         console.log(`Here you go, one ${name}!`);
         tickets -= cost;
         removeGiftById(index);
+        checkTickets();
+      } else {
+        console.log("There is no gift with that number!");
       }
-      checkTickets();
     }
   } else {
     console.log("Wow! There are no gifts with that number!");
