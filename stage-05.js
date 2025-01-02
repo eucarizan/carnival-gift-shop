@@ -92,11 +92,15 @@ function checkTickets() {
 function addTickets() {
   let choice = input("Enter the ticket amount: ");
   if (Number.isNaN(choice)) {
-    console.log("Please enter a vlid number between 0 and 1000.");
+    console.log("Please enter a valid number between 0 and 1000.");
   } else {
     let ticketToAdd = Number(choice);
-    tickets += ticketToAdd;
-    checkTickets();
+    if (ticketToAdd > -1 && ticketToAdd < 1001) {
+      tickets += ticketToAdd;
+      checkTickets();
+    } else {
+      console.log("Please enter a valid number between 0 and 1000.");
+    }
   }
 }
 
